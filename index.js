@@ -39,13 +39,16 @@ app.get('/add', (req, res) => {
 });
 
 // Handle the form submission to add a new product
+// Handle the form submission to add a new product
 app.post('/add', upload.single('image'), (req, res) => {
-  const { name, price } = req.body;
+  const { name, price, company, category, description } = req.body;
   const image = req.file.filename;
-  const product = { name, price, image };
+  const product = { name, price, company, category, description, image };
   products.push(product);
   res.redirect('/');
 });
+
+
 
 // Start the server
 app.listen(PORT, () => {
